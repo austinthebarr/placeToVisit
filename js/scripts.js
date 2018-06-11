@@ -1,11 +1,12 @@
 // buisness logic
 
-function Place(place, city, time, landmark, see){
+function Place(place, city, time, landmark, see, file){
   this.place = place;
   this.city = city;
   this.time = time;
   this.landmark = landmark;
   this.see = see;
+  this.file = file;
 }
 
 Place.prototype.timePlace = function() {
@@ -22,8 +23,10 @@ $(function(){
     var inputtedTime = $("input#new-time").val();
     var inputtedLandmark = $("input#new-landmark").val();
     var inputtedSee = $("input#new-mustSee").val();
+    var inputtedFile = $('input#file').val();
+    console.log(location);
 
-    var newPlace = new Place(inputtedPlace, inputtedCity, inputtedTime, inputtedLandmark, inputtedSee);
+    var newPlace = new Place(inputtedPlace, inputtedCity, inputtedTime, inputtedLandmark, inputtedSee, inputtedFile);
 
     $("ul#places").append("<li><span class ='places'>" + newPlace.timePlace() +"</span></li>");
 
@@ -40,6 +43,7 @@ $(function(){
       $(".time").text(newPlace.time);
       $(".landmark").text(newPlace.landmark);
       $(".mustSee").text(newPlace.see);
+      $(".file").html("<br><img style='height:200px;' src=" + newPlace.file +" />");
     });
   });
 });
